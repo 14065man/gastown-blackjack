@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gas Town Blackjack</title>
+  <style>
+    body {
+      background: #0b0b0b;
+      color: white;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    #game {
+      border: 2px solid #888;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      background-color: #222;
+    }
+    button {
+      padding: 10px;
+      margin: 10px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #dealer-text {
+      font-style: italic;
+      margin-top: 10px;
+      min-height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gas Town Blackjack</h1>
+  <div id="game">
+    <div id="status">Press Deal to begin.</div>
+    <button onclick="deal()">Deal</button>
+    <div id="dealer-text"></div>
+  </div>
+  <audio id="background" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio>
+  <script>
+    const dealerLines = [
+      "Excuse me sir but those are my feet you smell",
+      "Do you like my very jiggly tits?",
+      "Do you think I'm fat?",
+      "I could bite the ass off a beaver I am so hungry",
+      "I have diarrhea"
+    ];
+
+    function deal() {
+      const randomLine = dealerLines[Math.floor(Math.random() * dealerLines.length)];
+      document.getElementById("status").textContent = "Cards dealt. Dealer stares at you.";
+      document.getElementById("dealer-text").textContent = randomLine;
+
+      const audio = document.getElementById("background");
+      if (audio.paused) audio.play();
+    }
+  </script>
+</body>
+</html>
